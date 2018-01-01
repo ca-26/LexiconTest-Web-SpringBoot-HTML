@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.ca.lextest</groupId>
+	<artifactId>LexiconTest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<url>http://ca.com</url>
+	<packaging>jar</packaging>
+
+	<name>LexiconTest</name>
+	<description>${project.artifactId} - Game</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>		
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		
+        <skip.unit.tests>true</skip.unit.tests>
+		<skip.integration.tests>true</skip.integration.tests>
+		<ignore.test.failure>true</ignore.test.failure>		
+	</properties>
+
+	<profiles>
+	    <!-- The Configuration of the development profile -->
+	    <profile>
+	        <id>dev</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <properties>
+	            <!--
+	                Specifies the build.profile.id property that must be equal than the name of
+	                the directory that contains the profile specific configuration file.
+	                Because the name of the directory that contains the configuration file of the
+	                development profile is dev, we must set the value of the build.profile.id
+	                property to dev.
+	            -->
+	            <build.profile.id>dev</build.profile.id>
+	            <!--
+	                Only unit tests are run when the development profile is active
+	            -->
+	            <skip.integration.tests>true</skip.integration.tests>
+	            <skip.unit.tests>false</skip.unit.tests>
+	        </properties>
+	    </profile>
+	    <!-- The Configuration of the integration-test profile -->
+	    <profile>
+	        <id>integration-test</id>
+	        <properties>
+	            <!--
+	                Specifies the build.profile.id property that must be equal than the name of
+	                the directory that contains the profile specific configuration file.
+	                Because the name of the directory that contains the configuration file of the
+	                integration-test profile is integration-test, we must set the value of the
+	                build.profile.id property to integration-test.
+	            -->
+	            <build.profile.id>integration-test</build.profile.id>
+	            <!--
+	                Only integration tests are run when the integration-test profile is active
+	            -->
+	            <skip.integration.tests>false</skip.integration.tests>
+	            <skip.unit.tests>true</skip.unit.tests>
+	        </properties>
+	    </profile>
+	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+<!-- Tags Spring Security -->
+		<dependency>
+        	<groupId>org.thymeleaf.extras</groupId>
+        	<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+    	</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- JSTL for JSP -->
+		<!--
+		<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+        -->
+        
+		<!-- For FieldMatch Annotation -->
+		<dependency>
+	        <groupId>commons-beanutils</groupId>
+	        <artifactId>commons-beanutils</artifactId>
+   		</dependency>
+   		<!-- For DTO<->Entity/Model auto mapping -->
+   		<dependency>
+		    <groupId>org.modelmapper</groupId>
+		    <artifactId>modelmapper</artifactId>
+		    <version>1.1.0</version>
+		</dependency>
+
+    <!-- Bootstrap and jQuery -->
+	    <dependency>
+	        <groupId>org.webjars</groupId>
+	        <artifactId>bootstrap</artifactId>
+	        <version>3.3.7</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.webjars</groupId>
+	        <artifactId>jquery</artifactId>
+	        <version>3.2.1</version>
+	    </dependency>
+
+		<!-- mysql connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- For HashCodeBuilder  -->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.0</version>
+		</dependency>
+		
+		
+<!--		<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-jdbc</artifactId>
+</dependency>-->
+
+		<!-- testing -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+  			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+    	</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>		
+		<!--Without the "spring-boot-starter-jdbc" dependency "spring.datasource.url" settings
+		 in file "application.properties" are not processed
+		  
+		<dependency>
+		  	<groupId>org.springframework.boot</groupId>
+		  	<artifactId>spring-boot-starter-jdbc</artifactId>
+			<scope>test</scope>
+		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.21</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<!--
+		<finalName>maven-integration-testing</finalName>
+		<filters>-->
+		    <!--
+		    Ensures that the config.properties file is always loaded from the
+		    configuration directory of the active Maven profile. 
+			-->
+		<!--    <filter>profiles/${build.profile.id}/config.properties</filter>
+		</filters>
+		<resources>-->
+		    <!--
+		    Placeholders that are found from the files located in the configured resource
+		    directories are replaced with the property values found from the profile
+		    specific configuration file.
+			-->
+		<!--	<resource>
+			    <filtering>true</filtering>
+			    <directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		-->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- ByPass test faillure  check on build -->
+			<!--
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <version>2.19.1</version>
+			    <configuration>
+			        <testFailureIgnore>${ignore.test.failure}</testFailureIgnore>
+			    </configuration>
+			</plugin>
+			-->
+		 <!-- Integration test config  -->
+			<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <!--<version>3.0.0</version>-->
+                <executions>
+                    <!-- Add a new source directory to our build -->
+					<execution>
+					    <id>add-integration-test-sources</id>
+					    <phase>generate-test-sources</phase>
+					    <goals>
+					        <goal>add-test-source</goal>
+					    </goals>
+					    <configuration>
+					        <!-- Configures the source directory of our integration tests -->
+					        <sources>
+					            <source>src/integration-test/java</source>
+					        </sources>
+					    </configuration>
+					</execution>
+					<!-- Add a new resource directory to our build -->
+					<execution>
+					    <id>add-integration-test-resources</id>
+					    <phase>generate-test-resources</phase>
+					    <goals>
+					        <goal>add-test-resource</goal>
+					    </goals>
+					    <configuration>
+					        <!-- Configures the resource directory of our integration tests -->
+					        <resources>
+					            <!--
+					                Placeholders that are found from the files located in the configured resource
+					                directories are replaced with the property values found from the profile
+					                specific configuration file.
+					            -->
+					            <resource>
+					                <filtering>true</filtering>
+					                <directory>src/integration-test/resources</directory>
+					            </resource>
+					        </resources>
+					    </configuration>
+					</execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>                
+			    <!-- <version>2.19.1</version> -->
+                <!-- <version>2.18</version> -->
+                <configuration>
+                <!-- Skips tests failures if the value of ignore.test.failure property is true -->
+			        <testFailureIgnore>${ignore.test.failure}</testFailureIgnore>
+			        <!-- Skips unit tests if the value of skip.unit.tests property is true -->
+			        <skipTests>${skip.unit.tests}</skipTests>
+			        <!-- Excludes integration tests when unit tests are run -->
+			        <excludes>
+			            <exclude>**/IT*.java</exclude>
+			        </excludes>
+			    </configuration>
+            </plugin>
+            <!-- Used for integration tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <!--<version>2.18</version>  -->              
+			    <configuration>
+			        <testFailureIgnore>${ignore.test.failure}</testFailureIgnore>
+			    </configuration>
+                <executions>
+			        <!--
+			            Invokes both the integration-test and the verify goals of the
+			            Failsafe Maven plugin
+			        -->
+			        <execution>
+			            <id>integration-tests</id>
+			            <goals>
+			                <!--<goal>pre-integration-test</goal>--> 	<!-- for setting up the integration test environment. 	-->
+			                <goal>integration-test</goal> 				<!-- for running the integration tests. 				-->
+			                <!--<goal>post-integration-test</goal>--> 	<!-- for tearing down the integration test environment. -->
+			                <goal>verify</goal> 						<!-- for checking the results of the integration tests. -->
+			            </goals>
+			            <configuration>
+			                <!--
+			                    Skips integration tests if the value of skip.integration.tests
+			                    property is true
+			                -->
+			                <skipTests>${skip.integration.tests}</skipTests>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+		 <!-- Integration test config end -->
+		</plugins>
+	</build>
+
+</project>

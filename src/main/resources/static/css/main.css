@@ -1,0 +1,80 @@
+/*-----------------------------
+GLOBAL
+-------------------------------*/
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+#form-search{
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+.input-group-addon{
+	min-width: 45px;
+}
+/*-----------------------------
+LOGIN PAGE
+-------------------------------*/
+#form-login {
+  max-width: 360px;
+  padding: 15px;
+  margin: 0 auto;
+}
+/*
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}*/
+/*----------------------------
+REGISTRATION PAGE
+------------------------------*/
+#form-registration {
+  max-width: 360px;
+  padding: 15px;
+  margin: 0 auto;
+}
+/*#form-registration .form-group{
+  margin-bottom: 0px;
+}*/
+.validation-message{
+  color: #f39c12;
+ /* margin-top: 0;*/
+  margin-bottom: 0;
+  font-size: 0.85em;
+}
+/*
+.link-create-account{
+  align-items:center;
+  align-content: center;
+  display:block;
+}*/

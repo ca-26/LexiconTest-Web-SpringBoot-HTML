@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+
+  <!--/* FOOTER for visitors */-->
+  <footer th:fragment="visitor" class="container bottom">
+   	<!-- FOOTER for visitors -->
+    <p class="float-right"><a href="#" th:text="#{back.to.top}">Back to top</a></p>
+    <p>&copy; 2017 <a href="#">C*</a>, Inc. &middot; <span th:text="#{privacy}">Privacy</span> <a href="#" th:text="#{terms}">Terms</a></p>
+  </footer>
+    
+  
+  <!--/* FOOTER for players */-->
+  <footer th:fragment="player" class="container bottom">
+  	<!-- FOOTER for player -->
+    <p class="float-right"><a href="#" th:text="#{back.to.top}">Back to top</a></p>
+    <p>&copy; 2017 <a href="#">C*</a>, Inc. &middot; <span th:text="#{privacy}">Privacy</span> <a href="#" th:text="#{terms}">Terms</a></p>
+  </footer>
+  
+  <!--/* FOOTER for admin */-->
+  <footer th:fragment="admin" class="container bottom">
+  	<!-- FOOTER for admin -->
+    <p class="float-right"><a href="#" th:text="#{back.to.top}">Back to top</a></p>
+    <p>&copy; 2017 <a href="#">C*</a>, Inc. &middot; <span th:text="#{privacy}">Privacy</span> <a href="#" th:text="#{terms}">Terms</a></p>
+  </footer>
+
+</body>
+</html>

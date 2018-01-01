@@ -1,0 +1,37 @@
+<!doctype html>
+<html th:lang="${#locale}"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"      
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>  
+  <!--/* Include global HTML header */-->
+  <object th:replace="includes/html_head :: head" th:remove="tag"></object>
+  
+  <title th:text="#{title.access.denied.page}">Lexicon Test Game - Access Denied</title>
+    
+  <!--/* Custom styles for this template */-->
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+
+<body>
+	<!--/* Include global Navigation Bar */-->
+	<header th:replace="includes/header :: nav_bar"></header>
+	
+	<main role="main">
+		<div class="p-3 mb-2 bg-warning text-white text-center"><h1 class="text-xl" th:utext="#{sorry.no.permission.access.page}">Sorry, you do not have permission to access this page.</h1></div>
+		<div class="text-center"><span th:utext="#{click.here.to.go.back.login.page('<a class=&quot;link font-weight-bold&quot; href=&quot;/login&quot;>','</a>')}">Click here to go back to the Login page.</span><br><br></div>
+	</main>
+	
+	<!-- FOOTER : Include template -->
+	<footer th:replace="includes/footer :: (${#authorization.expression('hasRole(''ROLE_ADMIN'')')}? admin : player)"></footer>
+	
+	<!--/* JavaScript Libraires */-->
+	<script th:replace="includes/lib_js :: lib_js" th:remove="tag"></script>
+	
+	<!--/* Custom Javascript */-->
+	<!--/* JavaScript Libraires */-->
+	<script th:replace="includes/main_js" th:remove="tag"></script>
+  
+</body>
+</html>

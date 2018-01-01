@@ -1,0 +1,175 @@
+/*----------------------------
+    Global initialisations
+-----------------------------*/
+/* CSS Reset for homogen diplay in all browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+    /*font: normal 16px/1.4 sans-serif;*/
+}
+@font-face {
+  font-family: "Painter";
+  src: url("../fonts/Painter.ttf") format("truetype");
+}
+
+
+
+
+
+
+
+.login-body{
+  background-image: url("../images/arabesque.jpg");
+  background-repeat: repeat;
+}
+header, body, main, .login-content, .form-signin {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+body, header, main, .login-content, .form-signin, .form-signin div, footer{
+  width: 100%;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  /*overflow:auto;*/
+  /*align-content: space-between;*/
+}
+header{
+  margin: 0px 0px 20px 0px;
+  padding: 0px;
+  background-color: lightyellow;
+  opacity: 0.95;
+  font-family:"Painter", "Brush Script MT", sans-serif;
+  font-size: 2rem;
+  border-top-style:dashed;
+  border-bottom-style:dashed;
+  border-color: grey;
+}
+header div h1{
+  margin: 0px;
+}
+header div h1 a{
+  text-decoration: none;
+  color:black;
+  text-shadow: 10px 10px lightgrey;
+}
+.login-content {
+  width:50%;
+  max-width: 250px;
+  padding: 15px;
+  background-color: lightgrey;
+  opacity: 0.98;
+  border-radius: 10px;
+}
+.form-signin div h2{
+  text-align: center;
+  margin: 3px;
+}
+.form-signin div input {
+  margin: 0px 0px 5px 0px;
+  padding-left: 8px;
+  border-radius: 4px;
+  width: 94%;
+}
+.form-signin div button {
+  margin: 0px 0px 5px 0px;
+  width: 100%;
+}
+.register p {
+  margin: 0px;
+  padding: 0px;
+}
+
+footer{
+  background-color: lightyellow;
+  margin-top: 20px;
+  border-top-style:dashed;
+  border-bottom-style:dashed;
+  border-color: grey;
+}
+footer div, footer div ul{
+  width: 100%;
+  margin: 0px;
+  padding: 3px;
+}
+.menu-copyright {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+
+}
+.menu-copyright li {
+  margin: -1px;
+  padding: 5px;
+  list-style: none;
+  border-left-style:solid;
+  border-right-style:solid;
+  border-color: grey;
+}
+
+
+
+
+.button-animated {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  font-size: 1rem;
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  vertical-align:middle
+  padding: 7px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.button-animated:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+}
+.button-animated span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-size: 1rem;
+}
+.button-animated span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button-animated:hover span {
+  padding-right: 25px;
+}
+.button-animated:hover span:after {
+  opacity: 1;
+  right: 0;
+}

@@ -1,0 +1,11 @@
+<script>
+  /* Refresh the page if language changed */
+  $('#select-language').change(function(){
+     $('#form-language').attr('action', '?lang='+$('#select-language').val());
+     $('#form-language').submit();
+  });
+</script>
+
+
+  
+

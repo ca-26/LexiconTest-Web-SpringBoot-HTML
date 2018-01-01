@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head" th:remove="tag">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="akkoyun.cihan@gmail.com">  
+  <meta name="description" th:content="#{application.name}">
+  
+  <link rel="icon" th:href="@{/static/images/favicon.ico}">
+  
+  <!--/* Include CSS librairies */-->
+  <object th:replace="includes/lib_css :: lib_css" th:remove="tag"></object >  
+<head>
+
+<body>
+</body>
+</html>

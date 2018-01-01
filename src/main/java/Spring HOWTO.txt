@@ -1,0 +1,74 @@
+http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html
+http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-a-expression-basic-objects
+
+ACCESS à un Bean
+<div th:text="${@authService.getUserName()}">...</div>
+
+       <!-- IMPORTANT TAGS :
+       ${#locale.ctx}		the context object
+       ${#locale.vars}		the context variables.
+       ${#locale.locale}	the context locale.
+       ${#locale.httpServletRequest} (only in Web Contexts) the HttpServletRequest object.
+       ${#locale.httpSession}	(only in Web Contexts) the HttpSession object.
+       ${#locale.country}
+       
+       /*
+ * ======================================================================
+ * See javadoc API for class org.thymeleaf.context.IContext
+ * ======================================================================
+ */
+
+${#ctx.locale}
+${#ctx.variables}
+
+/*
+ * ======================================================================
+ * See javadoc API for class org.thymeleaf.context.IWebContext
+ * ======================================================================
+ */
+
+${#ctx.applicationAttributes}
+${#ctx.httpServletRequest}
+${#ctx.httpServletResponse}
+${#ctx.httpSession}
+${#ctx.requestAttributes}
+${#ctx.requestParameters}
+${#ctx.servletContext}
+${#ctx.sessionAttributes}
+
+
+
+
+
+Well on a 1.8ghz with Tomcat embedded and run with the following stats:
+
+java -Dgrails.env=prod -jar build/libs/api-framework-example-0.1.jar -Xms2g -Xmx2g -Xmn150m -XX:GCTimeRatio=2 -XX:ParallelGCThreads=10 -XX:+UseParNewGC -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC
+
+I can get 100K/reqs in 32 seconds with a FULL FRAMEWORK running:
+
+
+# Launching JAR :
+$ java -Xmx32m -Xss256k -jar target/demo-0.0.1-SNAPSHOT.jar
+
+
+### TESTS :
+	## By Profile :	de / integration-test
+		mvn clean test -P dev
+		mvn clean verify -P integration-test
+		mvn clean test -Dgroups="com.ca.lextest.junit.categories.Fast -P dev
+
+	## By Category
+    	mvn test -Dgroups="com.ca.lextest.junit.categories.Fast"
+    	mvn test -Dgroups="com.ca.lextest.junit.categories.Fast,com.ca.lextest.junit.categories.Db"
+	
+		Alternatively, we can set up the category directly in the pom.xml file :	
+	   			 <plugin>
+                	<groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-surefire-plugin</artifactId>
+                	<version>2.19.1</version>
+                	<configuration>
+	                    <groups>com.codepipes.Fast</groups>
+                	</configuration>
+            	</plugin>
+	
+	

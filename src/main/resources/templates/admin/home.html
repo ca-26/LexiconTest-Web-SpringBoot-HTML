@@ -1,0 +1,52 @@
+<!doctype html>
+<html th:lang="${#locale}"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"      
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>  
+  <!--/* Include global HTML header */-->
+  <object th:replace="includes/html_head :: head" th:remove="tag"></object>
+  
+  <title th:text="#{title.admin.page}">Lexicon Test Game - Administration</title>
+    
+  <!--/* Custom styles for this template */-->
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+
+<body>
+
+	<!--/* Include global Navigation Bar */-->
+	<header th:replace="includes/header :: nav_bar"></header>
+	
+	<main role="main">
+                
+		<div class="container">
+			GAME
+		</div>
+		
+		<div sec:authorize="isAuthenticated()">
+		  This content is only shown to authenticated users.		  
+			<div sec:authorize="hasRole('ROLE_ADMIN')">
+			  This content is only shown to administrators.
+			</div>
+			<div sec:authorize="hasRole('ROLE_PLAYER')">
+			  This content is only shown to players.
+			</div>
+		</div>
+		
+	</main>
+	
+	<!-- FOOTER : Include template -->
+	<footer th:replace="includes/footer :: (${#authorization.expression('hasRole(''ROLE_ADMIN'')')}? admin : player)"></footer>
+	
+	<!--/* JavaScript Libraires */-->
+	<script th:replace="includes/lib_js :: lib_js" th:remove="tag"></script>
+	
+	<!--/* Custom Javascript */-->
+	<!--/* JavaScript Libraires */-->
+	<script th:replace="includes/main_js" th:remove="tag"></script>
+  
+</body>
+</html>
+

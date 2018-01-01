@@ -1,0 +1,93 @@
+<!doctype html>
+<html th:lang="${#locale}"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"      
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>  
+  <!--/* Include global HTML header */-->
+  <object th:replace="includes/html_head :: head" th:remove="tag"></object>
+  
+  <title th:text="#{title.registration.page}">Lexicon Test Game - Login</title>
+    
+  <!--/* Custom styles for this template */-->
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+
+<body>
+
+<!--/* Include global Navigation Bar */-->
+<header th:replace="includes/header :: nav_bar"></header>
+
+<main role="main">
+
+	<!--/*--> 
+	  <div>
+	     you can see me only before thymeleaf processes me!
+	  </div>
+	<!--*/-->
+
+  <div class="container">
+    <div class="row">
+      <form class="form-vertical" id="form-login" method="post"
+            th:action="@{/login}" role="form">
+        <div class="col">
+          <h2 class="form-heading text-center" th:text="#{please.sign.in}">Please sign in</h2>
+        </div>
+        <div class="form-group">
+          <div class="col input-group">
+            <label for="email" class="sr-only" th:text="#{email.address}">Email address</label>
+            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+            <input class="form-control"
+					id="email"
+					name="email"
+            		th:placeholder="#{email}" type="text" maxlength="50" required autofocus/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col input-group">
+            <label for="password" class="sr-only" th:text="#{password}">Password</label>
+            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+            <input class="form-control"
+					id="password"
+					name="password"
+                  	th:placeholder="#{password}" type="password" maxlength="20" required/>
+          </div>
+          <div class="col">
+            <label class="validation-message" th:if="${param.error}"
+                  th:text="#{login.failed}"></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col">
+            <label>
+              <input type="checkbox" name="remember-me">
+               <span th:text="#{login.remember.me}"></span>
+            </label>
+          </div>
+          <div class="col">
+            <button class="btn btn-primary btn-block" type="submit"
+                    th:text="#{sign.in}">Sign in
+            </button>
+          </div>
+          <div class="col">
+            <h6 class="text-center font-weight-bold"><a class="link-register" th:href="@{/registration}" th:text="#{login.register}">Create an account</a></h6>
+          </div>
+        </div>
+    </form>
+    </div><!-- /row -->
+  </div><!-- /container -->
+</main>
+
+  <!-- FOOTER : Include template -->
+  <footer th:replace="includes/footer :: (${#authorization.expression('hasRole(''ROLE_ADMIN'')')}? admin : player)"></footer>
+  
+  <!--/* JavaScript Libraires */-->
+  <script th:replace="includes/lib_js :: lib_js" th:remove="tag"></script>
+  
+  <!--/* Custom Javascript */-->
+  <!--/* JavaScript Libraires */-->
+  <script th:replace="includes/main_js" th:remove="tag"></script>
+  
+</body>
+</html>

@@ -1,0 +1,30 @@
+…or create a new repository on the command line
+echo "# LexiconTestHTML" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/ca-26/LexiconTestHTML.git
+git push -u origin master
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/ca-26/LexiconTestHTML.git
+git push -u origin master
+
+
+
+
+
+##### EGit : Push project from Eclipse to Git Repository
+1) Right click on the project > Team > Share
+		Select : "Use or create repository in parent folder of the project"
+		Create Repository > Finish
+		
+2) Right click on the project > Team > Commit
+		- Select files to commit
+		  IMPORTANT : Do not select ".claspath / .project / .gitignore" files
+					to not let see other people, because they contain personnal local informations
+		- Add a comment				
+		> Commit
+		
+3) Right click on the project > Team > Show Repository View

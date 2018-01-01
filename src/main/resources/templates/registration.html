@@ -1,0 +1,171 @@
+<!doctype html>
+<html th:lang="${#locale}"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"      
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>  
+  <!--/* Include global HTML header */-->
+  <object th:replace="includes/html_head :: head" th:remove="tag"></object>
+  
+  <title th:text="#{title.registration.page}">Lexicon Test Game - Registration</title>
+    
+  <!--/* Custom styles for this template */-->
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+
+<body>
+
+  <!--/* Include global Navigation Bar */-->
+  <header th:replace="includes/header :: nav_bar"></header>
+
+  <main role="main">
+
+    <div class="container">
+      <div class="row">
+          <form class="form-vertical" id="form-registration" autocomplete="off"
+                th:action="@{/registration}" th:object="${user}" method="post" role="form">
+
+		<!--/* To solve the issue "Invalid CSRF token found for http://127.0.0.1:8080/login" if CSRF enable (default) */-->
+        <!--/*<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>*/-->
+        
+            <div class="form-group pb-1">
+              <div class="col">
+                <h2 class="form-signin-heading text-center" th:text="#{registration.form}">Registration Form</h2>
+              </div>
+              
+              <div class="form-group mb-0">
+              <div class="col input-group">
+                <label for="first-name" class="sr-only" th:text="#{firstname}">Name</label>
+                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                <input class="form-control"
+                		id="first-name"
+						th:field="*{firstName}" 
+                      	th:placeholder="#{firstname}" type="text" maxlength="50"/>
+              </div>
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('firstName')}"
+                      th:errors="*{firstName}">Field required</label>
+              </div>
+            </div>
+            
+            <div class="form-group mb-0">
+              <div class="col input-group">
+                <label for="last-name" class="sr-only" th:text="#{lastname}">Last Name</label>
+                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                <input class="form-control"
+						id="last-name"
+						th:field="*{lastName}" 
+                     	 th:placeholder="#{lastname}" type="text" maxlength="50"/>
+              </div>
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('lastName')}"
+                      th:errors="*{lastName}">Field required</label>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <div class="col input-group">
+                <label for="email" class="sr-only" th:text="#{email.address}">Email address</label>
+                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                <input class="form-control"
+               			id="email"
+						th:field="*{email}"
+                      	th:placeholder="#{email.address}" type="text" maxlength="50" autofocus/>
+              </div>
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}">Invalid e-mail adress</label>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <div class="col input-group">
+                <label for="email-confirm" class="sr-only" th:text="#{email.confirmation}">Email confirmation</label>
+                 <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                <input class="form-control"
+						id="email-confirm"
+						th:field="*{emailConfirm}"
+                     	th:placeholder="#{email.confirmation}" type="text" maxlength="50" autofocus/>
+              </div> 
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('emailConfirm')}"
+                      th:errors="*{emailConfirm}">E-mails entered doesn't match</label>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <div class="col input-group">
+                <label for="password" class="sr-only" th:text="#{password}">Password</label>
+                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input class="form-control"
+						id="password"
+						th:field="*{password}"
+                      	th:placeholder="#{password}" type="password" maxlength="20"/>
+              </div>
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}">Invalid password</label>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <div class="col input-group">
+                <label for="passwordConfirm" class="sr-only" th:text="#{password.confirmation}">Password Confirmation</label>
+                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input class="form-control"
+						id="passwordConfirm"
+						th:field="*{passwordConfirm}"
+                      	th:placeholder="#{password.confirmation}" type="password" maxlength="20"/>
+              </div>
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('passwordConfirm')}"
+                      th:errors="*{passwordConfirm}">Passwords entered doesn't match</label>
+              </div>
+            </div> 
+               
+            
+            <div class="form-group">
+           	 <div class="col">
+                <label class="control-label" for="terms" class="sr-only" th:text="#{i.agree.terms.and.conditions('','')}">I agree with the terms and conditions.</label>
+                <input id="terms"
+                           type="checkbox"
+                           th:field="*{termsAndConditions}"/>
+                <span th:utext="#{i.agree.terms.and.conditions('<a class=&quot;link font-weight-bold&quot; href=&quot;/terms&quot;>','</a>')}">I agree with the terms and conditions.</span>      
+              </div>
+              <div class="col">
+                <label class="validation-message" th:if="${#fields.hasErrors('termsAndConditions')}"
+                      th:errors="*{termsAndConditions}">*Field required</label>
+              </div>
+              
+				<div class="col pt-2">
+					<button class="btn btn-primary btn-block" type="submit" th:text="#{submit}">Submit</button>
+				</div>
+				<div class="col" th:unless="${param.success}">
+                	<span th:utext="#{already.registered.login.here('<a class=&quot;link font-weight-bold&quot; href=&quot;/login&quot;>','</a>')}">Already registered? Login here</span>
+            	</div>
+			</div>            
+            <div class="form-group">
+              	<div class="col" th:if="${param.success}">
+               		<p class="alert alert-info px-3">
+               		<span th:utext="#{account.registration.successful}">Your account has been registered successfully</span></br>
+                	<a class="link-login font-weight-bold" th:href="@{/login}" th:text="#{login.here}">Login here</a>
+                	</p>
+               	</div>
+            </div>
+          </div>
+            <!--/* TODO Add a Captcha visualCaptcha */-->
+
+  		  </form>
+      </div><!-- /row -->
+  	</div><!-- /container -->
+  </main>
+
+  <!-- FOOTER : Include template -->
+  <footer th:replace="includes/footer :: (${#authorization.expression('hasRole(''ROLE_ADMIN'')')}? admin : player)"></footer>
+  
+  <!--/* JavaScript Libraires */-->
+  <script th:replace="includes/lib_js :: lib_js" th:remove="tag"></script>
+  
+  <!--/* Custom Javascript */-->
+  <!--/* JavaScript Libraires */-->
+  <script th:replace="includes/main_js" th:remove="tag"></script>
+  
+</body>
+</html>
