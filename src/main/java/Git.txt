@@ -40,4 +40,30 @@ git push -u origin master
 	> Finish
 	> Save and Push
 	
+	If error : 
+		! [rejected] master -> master (non-fast-forward)
+			 All you have to do is issue a pull and your branch will be fast-forward:
+			$ git pull myrepo master
+			Then retry your push and everything should be fine:
+			$ git push github master
+	
+4) Configuration Remote Fetch/Pull :
+	Right click on the project > Team > Show in Repository View
+	Remotes > origin > "first item (green arrow)
+	Right click > Configure Fetch > Add > Source : Type "m" and select : master (refs/heads/master)
+	Next > Finish > Save and Fetch > OK
+		
+4) Configuration Master Branch :
+	Right click on the project > Team > Show in Repository View
+	Local > Master > Right click > Configure Branch
+		Remote = origin
+		Upstream = master (refs/heads/master)
+
+
+
+
+
+
+
+
 	
