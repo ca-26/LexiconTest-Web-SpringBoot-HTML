@@ -27,4 +27,17 @@ git push -u origin master
 		- Add a comment				
 		> Commit
 		
-3) Right click on the project > Team > Show Repository View
+		(Or Commit and Push)
+		
+3) Configuration Remote Push :
+	Right click on the project > Team > Show in Repository View
+	On the current project
+	Right click on "Remotes" > Create Remote
+	Select "Configure Push" > OK
+	
+	Field : URI : Past your Github Repository URI
+	Enter User Name and Password
+	> Finish
+	> Save and Push
+	
+	
