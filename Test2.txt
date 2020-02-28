@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 test5.1
+=======
+test5
+>>>>>>> branch 'master' of https://github.com/ca-26/LexiconTest-Web-SpringBoot-HTML.git
