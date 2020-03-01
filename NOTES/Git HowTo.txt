@@ -1,0 +1,69 @@
+…or create a new repository on the command line
+echo "# LexiconTestHTML" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/ca-26/LexiconTestHTML.git
+git push -u origin master
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/ca-26/LexiconTestHTML.git
+git push -u origin master
+
+
+
+
+
+##### EGit : Push project from Eclipse to Git Repository
+1) Right click on the project > Team > Share
+		Select : "Use or create repository in parent folder of the project"
+		Create Repository > Finish
+		
+2) Right click on the project > Team > Commit
+		- Select files to commit
+		  IMPORTANT : Do not select ".claspath / .project / .gitignore" files
+					to not let see other people, because they contain personnal local informations
+		- Add a comment				
+		> Commit
+		
+		(Or Commit and Push)
+		
+3) Configuration Remote Push :
+	Right click on the project > Team > Show in Repository View
+	On the current project
+	Right click on "Remotes" > Create Remote
+	Select "Configure Push" > OK
+	
+	Field : URI : Past your Github Repository URI
+	Enter User Name and Password
+	> Finish
+	> Save and Push
+	
+	If error : 
+		! [rejected] master -> master (non-fast-forward)
+			 All you have to do is issue a pull and your branch will be fast-forward:
+			$ git pull myrepo master
+			Then retry your push and everything should be fine:
+			$ git push github master
+	
+4) Configuration Remote Fetch/Pull :
+	Right click on the project > Team > Show in Repository View
+	Remotes > origin > "first item (green arrow)
+	Right click > Configure Fetch > Add > Source : Type "m" and select : master (refs/heads/master)
+	Next > Finish > Save and Fetch > OK
+		
+4) Configuration Master Branch :
+	Right click on the project > Team > Show in Repository View
+	Local > Master > Right click > Configure Branch
+		Remote = origin
+		Upstream = master (refs/heads/master)
+
+
+
+
+
+
+
+
+	
