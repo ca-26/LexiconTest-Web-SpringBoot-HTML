@@ -1,0 +1,115 @@
+http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html
+http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-a-expression-basic-objects
+
+ACCESS à un Bean
+<div th:text="${@authService.getUserName()}">...</div>
+
+       <!-- IMPORTANT TAGS :
+       ${#locale.ctx}		the context object
+       ${#locale.vars}		the context variables.
+       ${#locale.locale}	the context locale.
+       ${#locale.httpServletRequest} (only in Web Contexts) the HttpServletRequest object.
+       ${#locale.httpSession}	(only in Web Contexts) the HttpSession object.
+       ${#locale.country}
+       
+       /*
+ * ======================================================================
+ * See javadoc API for class org.thymeleaf.context.IContext
+ * ======================================================================
+ */
+
+${#ctx.locale}
+${#ctx.variables}
+
+/*
+ * ======================================================================
+ * See javadoc API for class org.thymeleaf.context.IWebContext
+ * ======================================================================
+ */
+
+${#ctx.applicationAttributes}
+${#ctx.httpServletRequest}
+${#ctx.httpServletResponse}
+${#ctx.httpSession}
+${#ctx.requestAttributes}
+${#ctx.requestParameters}
+${#ctx.servletContext}
+${#ctx.sessionAttributes}
+
+
+
+
+
+Well on a 1.8ghz with Tomcat embedded and run with the following stats:
+
+java -Dgrails.env=prod -jar build/libs/api-framework-example-0.1.jar -Xms2g -Xmx2g -Xmn150m -XX:GCTimeRatio=2 -XX:ParallelGCThreads=10 -XX:+UseParNewGC -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC
+
+I can get 100K/reqs in 32 seconds with a FULL FRAMEWORK running:
+
+
+# Launching JAR :
+$ java -Xmx32m -Xss256k -jar target/demo-0.0.1-SNAPSHOT.jar
+
+
+### TESTS :
+	## All Unit Tests :
+		- Using the default Spring Profile "test" "spring.profiles.active=test" defined in the file "src/test/ressources/application.properties"
+			mvn clean test
+		or
+		- By asking the active profile in the command :
+			mvn clean test -Dspring.profiles.active=test
+			
+	## Some Unit Tests (by using Spring test filtering) :
+			mvn clean test -Dgroups="com.ca.lextest.junit.categories.Fast"
+	
+	## All Integration Tests :
+		clean integration-test -P integration-test
+		or
+		clean integration-test -P integration-test -Dspring.profiles.active=integration-test (if needed to fore using config files named "*integration-test*")
+
+	## Some Integration Unit Tests (by using Spring test filtering) :
+		clean integration-test -P integration-test -Dgroups="com.ca.lextest.junit.categories.Db"
+		or
+		clean integration-test -P integration-test -Dgroups="com.ca.lextest.junit.categories.Db" -Dspring.profiles.active=integration-test (if needed to fore using config files named "*integration-test*")
+
+
+
+
+### Other TESTS examples :
+
+	mvn clean test -Dgroups="com.ca.lextest.junit.categories.Fast"
+	mvn clean integration-test -Dgroups="com.ca.lextest.junit.categories.Integration"
+
+
+	## By Profile :	de / integration-test
+		mvn clean test -P dev
+		mvn clean verify -P integration-test
+		mvn clean test -Dgroups="com.ca.lextest.junit.categories.Fast -P dev
+
+	## By Category
+    	mvn clean test -Dgroups="com.ca.lextest.junit.categories.Fast"
+    	mvn clean test -Dgroups="com.ca.lextest.junit.categories.Fast,com.ca.lextest.junit.categories.Db"
+	
+		Alternatively, we can set up the category directly in the pom.xml file :	
+	   			 <plugin>
+                	<groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-surefire-plugin</artifactId>
+                	<version>2.19.1</version>
+                	<configuration>
+	                    <groups>com.codepipes.Fast</groups>
+                	</configuration>
+            	</plugin>
+	
+	
+	## Intagration Tests :
+    	mvn clean test 				(will run only the basic unit tests, and will stop the build if any of them fails),
+    	mvn clean integration-test 	(will run integration tests, and will not stop the build if any of them fails), and
+   	 	mvn clean verify 				(will stop the build if an integration test fails).
+	
+		mvn clean integration-test -Dgroups="com.ca.lextest.junit.categories.Integration"
+	
+	
+	
+	
+	clean integration-test -Dspring.profiles.active=integration-test -Pintegration-test
+	

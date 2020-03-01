@@ -1,0 +1,247 @@
+//################################################################################################################################
+//################################################################################################################################
+//                                         SRING BOOT ANNOTATIONS DESCRIPTION
+//################################################################################################################################
+//################################################################################################################################
+
+
+//############################################################
+//						APPLICATION 
+//############################################################
+
+//================================================================================================================================
+//@SpringBootApplication 
+//		-	Convenience annotation that adds automatically all of the following:
+//				- @Configuration:			tags the class as a source of bean definitions for the application context.	
+//				- @EnableAutoConfiguration 	tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.	
+//				  							Normally you would add @EnableWebMvc for a Spring MVC app, but Spring Boot adds it automatically when it sees
+//				  							spring-webmvc on the classpath.
+//				  							This flags the application as a web application and activates key behaviors such as setting up a DispatcherServlet.
+//				- @ComponentScan 			tells Spring to look for other components, configurations, and services on the class path by default or in precised package,
+//				  							allowing it to find the Controllers for example.
+//									    	Scans the classpath or package for annotated components that will be auto-registered as Spring beans.
+//									        By default, the Spring-provided @Component, @Repository, @Service, and @Controller stereotypes will be detected.
+//									        @ComponentScan("com.ca.app")
+//================================================================================================================================
+//@Configuration
+//		-	Annotation for Spring to be able to find this bean and make it a candidate for injection.
+//		- 	Example:
+//				@Configuration
+//				@PropertySource("classpath:configprops.properties")
+//				@ConfigurationProperties(prefix = "mail")
+//================================================================================================================================
+//@EnableWebMvc
+//		-	Enabling Spring MVC in an application and works by importing the Spring MVC Configuration from WebMvcConfigurationSupport.
+//			used in conjunction with the @ConfigurationXXX annotation
+//			The configuration can be customized by the @Configuration class (ex:SpringMvcConfig) implementing the WebMvcConfigurerAdapter:
+//================================================================================================================================
+//@EnableWebSecurity
+//		-	Add this annotation to an @Configuration class to have the Spring Security configuration defined in any WebSecurityConfigurer
+//			or more likely by extending the WebSecurityConfigurerAdapter base class and overriding individual methods.
+//================================================================================================================================
+//@EnableScheduling
+//		-	Enables scheduled task capabilities and allows us to use @Scheduled annotations in the application.
+//			This configuration again can be customized by the @Configuration class (ex:SchedulingConfig) implementing the SchedulingConfigurer class:
+//================================================================================================================================
+//@EnableAsync
+//		-	Enables asynchronous processing in our application.
+//================================================================================================================================  
+//@EnableWebSocket		
+//			Configure the processing of web socket requests.
+//			Customization can be done by implementing the WebSocketConfigurer class:
+//================================================================================================================================
+
+
+
+//############################################################
+//						DATA BASE
+//############################################################
+
+//================================================================================================================================
+//@EnableJpaRepositories
+//		-	Enables Spring Data JPA repositories by scanning the package of the annotated configuration class for repositories.
+//		-	Parameters :
+//			    - value						Alias for the basePackages() attribute
+//			    - basePackages 				Base packages to scan for annotated components
+//			    - enableDefaultTransactions	Configures whether or not to enable default transactions for Spring Data JPA repositories
+//			    - entityManagerFactoryRef 	Configures the name of the EntityManagerFactory bean definition to be used
+//		-	Example :
+//			    @EnableJpaRepositories(
+//					entityManagerFactoryRef = "mysqlEntityManagerFactory", 
+//					transactionManagerRef = "mysqlTransactionManager",
+//					basePackages = "com.app.db.repositories")
+//================================================================================================================================
+//@EnableTransactionManagement
+//		-	Enables Spring’s annotation-driven transaction management capability
+//================================================================================================================================
+//@EnableJpaAuditing
+//		-	Enables auditing on your JPA entities.
+//			In the context of ORM, database auditing means tracking and logging events related to persistent entities, or simply entity versioning.
+//			Inspired by SQL triggers, the events are insert, update and delete operations on entities.
+//			The benefits of database auditing are analogous to those provided by source version control.
+//================================================================================================================================
+ //@Constraint
+//		-	Marks an annotation as being a Bean Validation constraint.
+//		-	A given constraint annotation must be annotated by a @Constraint annotation which refers to its list of constraint validation implementations.
+//		-	@Constraint(validatedBy = FieldMatchValidator.class)
+//================================================================================================================================  
+//@Table
+//		-	Entities corresponding table name in the DataBase
+//		-	Parameters :
+//					name				(Optional) The name of the table. 
+//					catalog				(Optional) The catalog of the table. 
+//					schema				(Optional) The schema of the table. 
+//					uniqueConstraints	(Optional) Unique constraints that are to be placed on the table.
+//										These are only used if table generation is in effect.
+//										These constraints apply in addition to any constraints specified by the Column and JoinColumn annotations and
+//										constraints entailed by primary key mappings. 
+//					indexes				(Optional) Indexes for the table. These are only used if table generation is in effect.
+//										Note that it is not necessary to specify an index for a primary key, as the primary key index will be created automatically.
+//================================================================================================================================
+
+
+//############################################################
+//						SERVICES
+//############################################################
+
+//================================================================================================================================
+//@Service
+//		-	The service dependency will be automatically injected by Spring into the controller (because of the constructor signature)
+//================================================================================================================================
+
+
+
+
+//############################################################
+//						ANNOTATIONS
+//############################################################
+
+//================================================================================================================================
+//@Documented
+//		-	Indicates that annotations with a type are to be documented by javadoc and similar tools by default.
+//		-	This type should be used to annotate the declarations of types whose annotations affect the use of annotated elements by their clients.
+//		-	If a type declaration is annotated with Documented, its annotations become part of the public API of the annotated elements.
+//================================================================================================================================
+//@Retention
+//		-	Indicates how long annotations with the annotated type are to be retained. If no Retention annotation is present on an annotation type declaration, the retention policy defaults to RetentionPolicy.CLASS.
+//			A Retention meta-annotation has effect only if the meta-annotated type is used directly for annotation. It has no effect if the meta-annotated type is used as a member type in another annotation type.
+//		-	Values :	@Retention(RUNTIME)
+//				CLASS:		Annotations are to be recorded in the class file by the compiler but need not be retained by the VM at run time.
+//				RUNTIME :	Annotations are to be recorded in the class file by the compiler and retained by the VM at run time, so they may be read reflectively.
+//				SOURCE :	Annotations are to be discarded by the compiler.
+//================================================================================================================================  
+//@Target
+//		-	Indicates the kinds of program element to which an annotation type is applicable. If a Target meta-annotation is not present on an annotation type declaration, the declared type may be used on any program element. If such a meta-annotation is present, the compiler will enforce the specified usage restriction.
+//		-	Values :
+//				ElementType:	@Target({ElementType.FIELD, ElementType.METHOD})
+//					ANNOTATION_TYPE:Annotation type declaration
+//					CONSTRUCTOR:	Constructor declaration
+//					FIELD:			Field declaration (includes enum constants)
+//					LOCAL_VARIABLE:	Local variable declaration
+//					METHOD:			Method declaration
+//					PACKAGE:		Package declaration
+//					PARAMETER:		Parameter declaration
+//					TYPE:			Class, interface (including annotation type), or enum declaration
+//================================================================================================================================ 
+//@Async 
+//		-	Will make it execute in a separate thread i.e. the caller will not wait for the completion of the called method.
+//================================================================================================================================ 
+
+
+
+//############################################################
+//						TESTING
+//############################################################
+
+//================================================================================================================================
+//@RunWith(SpringRunner.class)
+//  @RunWith :
+//		-	Provide a bridge between Spring Boot test features and JUnit. 
+// 			Whenever we are using any Spring Boot testing features in out JUnit tests, this annotation will be required.
+//================================================================================================================================
+//@SpringBootTest
+//		- 	Can be used when we need to bootstrap the entire container.
+//			The annotation works by creating the ApplicationContext that will be utilized in our tests.
+//		-	Parameters :
+//				- webEnvironment : Configure our runtime environment.
+//						Value : WebEnvironment.RANDOM_PORT" :
+//									Start the container with a random port.
+//									It will be helpful if several integration tests are running in parallel on the same machine.
+//						Example : @SpringBootTest(classes = {Application.class, OtherClass.class})
+//				- classes : Define witch SpringBoot applications to launch.
+//							To be used if you have many Spring Boot Applications in the same Project
+//							or if you want to load additional classes.
+//						Value : Main class name of SpringBoot applications or additional class to launch.
+//		-	Example :	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+//================================================================================================================================
+//@ActiveProfiles("test")
+//		- 	Automatically load configurations files named "*-<active_profile_name>.properties".
+//================================================================================================================================
+//@TestPropertySource (locations = "classpath:application-aditional_custom_config_file.properties")
+//		- 	Will load the additional custom configurations file define in the variable "locations".
+//			Please note that the property file loaded with @TestPropertySource will override the existing application.properties file.
+//================================================================================================================================
+//@WebAppConfiguration
+//		-	Class-level annotation used to create a web version of the application context in the Spring Framework.
+//			It’s used to denote that the ApplicationContext which is bootstrapped for the test should be an instance of WebApplicationContext.
+//		-	We’ll usually find this annotation in integration tests because the WebApplicationContext is used to build a MockMvc object. 
+//================================================================================================================================
+//@WebApplicationContext
+//		-	This instructs the TestContext framework that a WebApplicationContext should be loaded for the test.
+//			And, in the background a MockServletContext is created and supplied to our test’s WebApplicationContext by the TestContext framework.
+//		-	Parameters:
+//				By default, the base resource path for the WebApplicationContext will be set to “file:src/main/webapp”,
+//				which is the default location for the root of the WAR in a Maven Project.
+//				However, we can override this by simply providing an alternate path :
+//					- @WebAppConfiguration("src/test/webapp") :				(file system path)
+//					- @WebAppConfiguration("classpath:test-web-resources") 	(resource path from the classpath)
+//   @EnableWebMvc requires @WebApplicationContext annotation in order to be used
+//================================================================================================================================
+//@DataJpaTest
+//		-	Configuring H2, an in-memory database, as default database Data Source
+//		-	Setting Hibernate, Spring Data, and the DataSource
+//		-	Performing an @EntityScan
+//		-	Turning on SQL logging
+//================================================================================================================================
+//@AutoconfigureTestDatabase
+//		-	Automatically replace the default `DataSource` with an embedded H2 in memory database.
+//================================================================================================================================
+//@Transactional
+//		-	Mandatory annotation if the used DataBase DataSource is transactional.
+//			or if you use the @PersistenceContext annotation to access an EntityManager, because @PersistenceContext is transactional by dafeult.
+//			Cf. https://stackoverflow.com/questions/32269192/spring-no-entitymanager-with-actual-transaction-available-for-current-thread
+//================================================================================================================================
+//@Rollback
+//		-	Rollback all DB modifications after the tests.
+//================================================================================================================================
+//@Category
+//		-	Custom test categories classes, to be able to launch only part of them.
+//================================================================================================================================
+//@ContextConfiguration(classes = {TestContext.class, WebAppContext.class})
+//		-	Determine how to load and configure an ApplicationContext for integration tests. 
+//================================================================================================================================
+//@AutoConfigureMockMvc
+//  @AutoConfigureMockMvc :
+//		-	Used to not start the server at all, but test only the layer below that,
+//			where Spring handles the incoming HTTP request and hands it off to your controller.
+//			That way, almost the full stack is used, and your code will be called exactly the same way as 
+//			if it was processing a real HTTP request, but without the cost of starting the server.
+//			To do that we will use Spring’s MockMvc, and we can ask for that to be injected for us
+//			by using the @AutoConfigureMockMvc annotation on the test case.
+//================================================================================================================================
+//@WebMvcTest
+//		-	In this test, the full Spring application context is started, but without the server.
+//			We can narrow down the tests to just the web layer by using @WebMvcTest
+//			Spring Boot is only instantiating the web layer, not the whole context.
+//			In an application with multiple controllers you can even ask for just one to be instantiated, using, for example @WebMvcTest(HomeController.class)
+//================================================================================================================================
+//@MockBean
+//		-	Create and inject a mock for a service (if you don’t do this the application context cannot start), and we set its expectations using Mockito.
+//================================================================================================================================
+
+
+
+
+//################################################################################################################################
+//################################################################################################################################
+//################################################################################################################################

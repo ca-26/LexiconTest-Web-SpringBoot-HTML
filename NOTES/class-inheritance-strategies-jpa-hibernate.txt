@@ -1,0 +1,4 @@
+https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
+
+
+https://medium.com/@nagillavenkatesh1234/design-patterns-for-jpa-and-hibernate-aca40fb19e2c

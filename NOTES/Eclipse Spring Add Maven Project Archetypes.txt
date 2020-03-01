@@ -1,0 +1,7 @@
+
+Eclipse / Preferences / Mave / Archetypes / Add Remote Catalog 
+Catalog File = http://repo1.maven.org/maven2/archetype-catalog.xml
+Ok
+
+New Maven Project
+ex: Filter : spring-ws-archetyp

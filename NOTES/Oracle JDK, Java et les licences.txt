@@ -1,0 +1,4 @@
+https://aresu.dsi.cnrs.fr/spip.php?article220
+
+Open JDK JRE binary download link for Windows :
+https://github.com/ojdkbuild/ojdkbuild
