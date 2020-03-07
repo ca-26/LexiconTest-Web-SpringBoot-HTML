@@ -1,0 +1,18 @@
+#### GitRebase Example
+	
+git checkout master
+git pull	// Get all latest commits inlocal repo
+
+git checkout feature_branch
+git add test.txt
+git commit -m 'test feature'
+
+git checkout master
+git pull	// To get inlocal repo all the latest commits dones by other after feature branch creation
+
+git checkout feature_branch
+git rebase master	// Link all the commits done in the branch at the top of the local repo master
+
+git checkout master
+git rebase feature_branch	// Copy all the commits done in the branch at the top of the local repo master
+git push 	// To push local changes to remote repo
